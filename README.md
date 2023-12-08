@@ -1,12 +1,26 @@
-# Scooter demand fc in Voiholm
+# Scooter demand forecasting in Voiholm
 
+## Set up
+Why poetry for package and dependency management:
+- simple to use
+- easy to configuring - does a lot automatically
 
-Why poetry: 
-- simple to use 
-- easy to configuring - doees alot automatically
+Poetry set up: 
+Make sure you have poetry installed (add link)
 
+To create virtual environment:
+```
+poetry install
+```
 
-How to activate venv: 
-- run poetry shell
+How to activate venv using poetry:
+```
+poetry shell
+```
+
+How to add packages:
+```
+poetry add package-name
+```
 
 
