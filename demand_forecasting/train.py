@@ -1,6 +1,7 @@
 import os 
 import pandas as pd
 import xgboost as xgb
+import logging
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 from sklearn.model_selection import cross_val_score
@@ -28,6 +29,7 @@ def training_xgb_model(df_with_features:pd.DataFrame, target_variable:str, featu
                                       objective='reg:squarederror',
                                       booster='gbtree')
     model = xgb_best_model.fit(X, y)
+    logging.info("Trained XGB model")
 
     return model
 

@@ -40,7 +40,7 @@ def generate_features(df:pd.DataFrame)-> pd.DataFrame:
 
     # Mergin on newly created features to main dataframe 
     df_with_added_features = pd.merge(df, avg_num_of_rides_in_area_df, on=['h3index_small', 'date'], how='left')
-    logging.info("Generating features")
+    logging.info("Generated features for training dataset")
 
     return df_with_added_features
 
@@ -75,6 +75,7 @@ def generate_features_for_inference(unique_h3index_df: pd.DataFrame, df:pd.DataF
     weather_at_prediciton_date_df = weather_df[weather_df.date == date_of_prediction]
 
     inference_df = pd.merge(inference_df, weather_at_prediciton_date_df, left_on= 'start_date', right_on='date', how='left') 
+    logging.info("Generated features for interference")
 
     return inference_df
 
