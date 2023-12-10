@@ -52,3 +52,19 @@ project_root/
 ├── pypoetry.toml          # ? 
 ├── README.md              # Project documentation
 ├── .gitignore             # Gitignore file
+
+
+## Docker 
+To build image: 
+```
+docker build -t demand_forecast_image . --platform=linux/arm64
+
+```
+To run image:
+```
+docker run --name demand_forecast_container -p 8080:80 demand_forecast_image
+```
+
+
+## Scheduling job
+since this is a daily predction it should probably be triggered nightly when input data is updated. For this one can use Kubernetes cron jobs or other tools like Airflow.

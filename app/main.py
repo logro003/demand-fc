@@ -22,10 +22,10 @@ def main():
     weather_df = verify_weather_df(weather_raw_df)
 
     # # #  Preprocess input data   # # #
-    df, unique_h3index_df = preprocessing(rides_df=rides_df, weather_df=weather_df)
+    processed_df, unique_h3index_df = preprocessing(rides_df=rides_df, weather_df=weather_df)
 
     # # #  Create features  # # #
-    df_with_features = generate_features(df)
+    df_with_features = generate_features(processed_df)
 
     # # #  Training the model  # # #
     target = config.MODEL_CONFIG['target']
@@ -43,7 +43,7 @@ def main():
                                 )
 
     # # #  Making predictions for next day  # # #
-    inference_with_features_df = generate_features_for_inference(unique_h3index_df, df, weather_df) 
+    inference_with_features_df = generate_features_for_inference(unique_h3index_df, processed_df, weather_df) 
     prediction_output_df = predict(inference_with_features_df=inference_with_features_df,
                                    features=features,
                                    model=model)
