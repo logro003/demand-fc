@@ -62,7 +62,7 @@ docker build -t demand_forecast_image . --platform=linux/arm64
 ```
 To run image:
 ```
-docker run --name demand_forecast_container -p 8080:80 demand_forecast_image
+docker run --env-file .env --name demand_forecast_container demand_forecast_image
 ```
 
 

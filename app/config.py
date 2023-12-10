@@ -7,6 +7,6 @@ MODEL_CONFIG = {
 }
 
 DATA_CONFIG = {
-    'input_data_path': '../input/',
-    'output_data_path': '../output/'
+    'input_data_path': 'input/',
+    'output_data_path': 'output/'
 }

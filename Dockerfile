@@ -6,17 +6,13 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         build-essential \
         libffi-dev \
-        libssl-dev \
-        curl \
-        git \
-        && \
-    rm -rf /var/lib/apt/lists/*
+        libssl-dev 
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /demand_forecast
 
-# Copy the dependency file to the working directory
-COPY poetry.lock pyproject.toml /app/
+# Copy the application code
+COPY . /demand_forecast/
 
 # Install Poetry
 RUN pip install poetry==1.7.1
@@ -24,13 +20,14 @@ RUN pip install poetry==1.7.1
 # Install project dependencies
 RUN poetry install --no-root
 
-# Copy the rest of the application code
-COPY . /app/
+# Setting python path to root folder 
+ENV PYTHONPATH /demand_forecast
 
-# Expose the port the application runs on
-EXPOSE 8000
+# Expose the port the application runs on - in caSe of rest API 
+#EXPOSE 8000
 
 # Set up volumes
-VOLUME ["/app/output"]
+VOLUME ["/demand_forecast/output", "/demand_forecast/input"]
 
-#ENTRYPOINT ["python", "app/main.py"]
+# Set the container’s primary purpose - running the model training and prediction
+ENTRYPOINT ["poetry", "run", "python",  "app/main.py"]

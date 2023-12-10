@@ -1,5 +1,8 @@
+import config
 
-from app import config
+import sys
+import os
+#sys.path.append('../demand_forecasting')
 
 from demand_forecasting.read import read_data
 from demand_forecasting.verify import verify_ride_df, verify_weather_df
@@ -12,10 +15,22 @@ from demand_forecasting.predict import predict
 
 def main():
 
-    # # #  Read input data  # # #
+    # Data configs 
     raw_data_path = config.DATA_CONFIG['input_data_path']
+    data_output_path = config.DATA_CONFIG['output_data_path']
+
+    # Model configurations
+    target = config.MODEL_CONFIG['target']
+    features = config.MODEL_CONFIG['features']
+    max_depth = config.MODEL_CONFIG['max_depth']
+    learning_rate = config.MODEL_CONFIG['learning_rate']
+    n_estimators = config.MODEL_CONFIG['n_estimators']
+
+    # # #  Read input data  # # #
     rides_raw_df = read_data(f"{raw_data_path}voiholm.csv")
     weather_raw_df = read_data(f"{raw_data_path}weather_data.csv")
+
+    #print(len(rides_raw_df))
 
     # # #  Verify dataframes # # #
     rides_df = verify_ride_df(rides_raw_df)
@@ -28,12 +43,6 @@ def main():
     df_with_features = generate_features(processed_df)
 
     # # #  Training the model  # # #
-    target = config.MODEL_CONFIG['target']
-    features = config.MODEL_CONFIG['features']
-    max_depth = config.MODEL_CONFIG['max_depth']
-    learning_rate = config.MODEL_CONFIG['learning_rate']
-    n_estimators = config.MODEL_CONFIG['n_estimators']
-
     model = training_xgb_model(df_with_features=df_with_features,
                                 target_variable=target,
                                 features=features,
@@ -49,7 +58,6 @@ def main():
                                    model=model)
 
     # # #  Saving prediction to output folder  # # #
-    raw_data_path = config.DATA_CONFIG['output_data_path']
-    prediction_output_df.to_csv(f"{raw_data_path}predictions.csv", index=False)
+    prediction_output_df.to_csv(f"{data_output_path}predictions.csv", index=False)
 
-    return prediction_output_df
+main()
