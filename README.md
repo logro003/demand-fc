@@ -28,9 +28,13 @@ How to update dependencies:
 poetry update 
 ```
 
-## Code structure overview
+## Code structure overview for case presentation
 
 project_root/
+│
+├── app/
+│   ├── config.py         # Configurations for model features and hyperparameters  
+│   ├── main.py           # Runs training and prediction
 │
 ├── demand_forecasting/
 │   ├── features.py       # Script for creating features for the model
@@ -52,19 +56,22 @@ project_root/
 ├── pypoetry.toml          # ? 
 ├── README.md              # Project documentation
 ├── .gitignore             # Gitignore file
+├── .env                   # Environment variables for what data to include in traning and for which date to make predictions
 
 
 ## Docker 
+The image contains the folders app and demand forecasting and necessary files for poetry. See Dockerfile.  
+#--platform=linux/arm64
+
 To build image: 
 ```
-docker build -t demand_forecast_image . --platform=linux/arm64
+docker build -t demand_forecast_image .
 
 ```
-To run image:
+To run image with input files from input folder and saving predictions to output folder:
 ```
-docker run --env-file .env --name demand_forecast_container demand_forecast_image
+docker run -v $(pwd)/output:/demand_forecast/output -v $(pwd)/input:/demand_forecast/input --env-file .env demand_forecast_image 
 ```
-
 
 ## Scheduling job
 since this is a daily predction it should probably be triggered nightly when input data is updated. For this one can use Kubernetes cron jobs or other tools like Airflow.

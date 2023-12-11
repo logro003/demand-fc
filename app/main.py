@@ -12,6 +12,8 @@ from demand_forecasting.train import training_xgb_model
 from demand_forecasting.features import generate_features_for_inference
 from demand_forecasting.predict import predict
 
+import logging
+
 
 def main():
 
@@ -59,5 +61,6 @@ def main():
 
     # # #  Saving prediction to output folder  # # #
     prediction_output_df.to_csv(f"{data_output_path}predictions.csv", index=False)
+    logging.info("Saving predictions to output")
 
 main()
