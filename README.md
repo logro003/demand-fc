@@ -1,4 +1,4 @@
-# Scooter demand forecasting in Voiholm
+# Scooter demand next day forecasting in Voiholm
 
 ## Set up
 Why use poetry for package and dependency management:
@@ -64,9 +64,13 @@ Run all tests by
  poetry run pytest
 ```
 
+## Running application locally 
+```
+poetry run python app/main.py
+```
+
 ## Docker 
-The image contains the folders app and demand forecasting and necessary files for poetry. See Dockerfile.  
-#--platform=linux/arm64
+The image contains the folders app and demand forecasting and necessary files for poetry. See Dockerfile.
 
 To build image: 
 ```

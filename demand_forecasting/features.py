@@ -85,6 +85,9 @@ def generate_features_for_inference(
         inference_df, avg_num_of_rides_per_area_df, on="h3index_small", how="left"
     )
 
+     # fill nan with 0, if we dont have any rides in the area
+    inference_df.avg_num_rides_in_area_one_week_before.fillna(0, inplace=True)
+
     # # #   Get weather forecast for next day  # # #
     # Here we should call an external API during night to get the weather forecast
     # for the area for the next day.

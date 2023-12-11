@@ -3,8 +3,8 @@ import pandas as pd
 from demand_forecasting.features import generate_features_for_training
 
 
-
 def test_avg_num_of_rideds_one_week_before_feature():
+    """ Testing feature generation for average number of rides one week before """
     # Given
     preprocessed_df = generate_mock_data()
     #When 

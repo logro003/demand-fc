@@ -7,8 +7,8 @@ MODEL_CONFIG = {
         "avg_num_rides_in_area_one_week_before",
     ],
     "max_depth": 3,
-    "learning_rate": 0.1,
-    "n_estimators": 100,
+    "learning_rate": 0.15,
+    "n_estimators": 50,
 }
 
 DATA_CONFIG = {"input_data_path": "input/", "output_data_path": "output/"}
