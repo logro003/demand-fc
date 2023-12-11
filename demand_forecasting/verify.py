@@ -5,7 +5,6 @@ import logging
 from pandera import Column
 from datetime import datetime
 
-logging.getLogger().setLevel(logging.INFO)
 
 def verify_ride_df(df: pd.DataFrame) -> pd.DataFrame:
 

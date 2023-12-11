@@ -3,6 +3,7 @@ import pandas as pd
 import logging
 from dateutil.relativedelta import relativedelta
 
+
 def preprocessing(rides_df:pd.DataFrame,
                 weather_df: pd.DataFrame
                 ) -> pd.DataFrame:
@@ -10,8 +11,8 @@ def preprocessing(rides_df:pd.DataFrame,
     rides_df['start_date'] =  pd.to_datetime(rides_df.start_time.dt.date)
 
     # Getting traning date and number of histroical days to include in traning dataset
-    training_date = pd.to_datetime(os.environ.get('TRAINING_DATE'))
-    number_of_days_to_include_in_training = int(os.environ.get('TRAINING_NUMBER_OF_DAYS'))
+    training_date = pd.to_datetime(os.environ['TRAINING_DATE'])
+    number_of_days_to_include_in_training = int(os.environ['TRAINING_NUMBER_OF_DAYS'])
 
      # Only extracting data for the the peiod we want to include in the training data 
     date_to = training_date
