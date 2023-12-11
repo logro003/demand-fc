@@ -6,6 +6,7 @@ logging.getLogger().setLevel(logging.INFO)
 
 # Read the CSV file into a pandas DataFrame
 def read_data(file_path: str)-> pd.DataFrame:
+    """ Function that reads csvs data """
     df = pd.read_csv(file_path)
     logging.info(f"Read dataframe from file path {file_path}")
 
