@@ -31,7 +31,7 @@ def creating_avg_num_of_rides_last_week_feature(df:pd.DataFrame)-> pd.DataFrame:
     return avg_num_of_rides_in_area_df
 
 
-def generate_features(df:pd.DataFrame)-> pd.DataFrame:
+def generate_features_for_training(df:pd.DataFrame)-> pd.DataFrame:
 
     # Feature 1: Average number of rides in the area during last week
     avg_num_of_rides_in_area_df = creating_avg_num_of_rides_last_week_feature(df)
@@ -70,8 +70,7 @@ def generate_features_for_inference(unique_h3index_df: pd.DataFrame, df:pd.DataF
     # this should call an external API during night to get the weather forecast for the area for the next day. 
     # since this case doesn't provide the location of Voiholm I can't implement this now 
 
-    # lets here assume the weather forecast we get for next day is accurate, and let's use the data we have in weather_data.csv for the 2020-08-31)
-
+    # lets here assume the weather forecast we get for next day is accurate, and let's use the data we have in weather_data.csv for the 2020-08-31
     weather_at_prediciton_date_df = weather_df[weather_df.date == date_of_prediction]
 
     inference_df = pd.merge(inference_df, weather_at_prediciton_date_df, left_on= 'start_date', right_on='date', how='left') 

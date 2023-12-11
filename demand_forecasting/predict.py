@@ -1,7 +1,7 @@
 import pandas as pd
 import logging
 
-def predict(inference_with_features_df: pd.DataFrame, features:list, model):
+def predict(inference_with_features_df: pd.DataFrame, features:list, model)->pd.DataFrame:
 
     # Preparing data for modelling - not including days when we don't have 7 days of historical data 
     predict_df = inference_with_features_df[features].copy()

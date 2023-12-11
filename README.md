@@ -38,10 +38,10 @@ project_root/
 │
 ├── demand_forecasting/
 │   ├── features.py       # Script for creating features for the model
-│   ├── train.py          # Script for training the ML model
-│   ├── predict.py        # Script for making predictions
+│   ├── predict.py        # Script for making predictions for next day
 │   ├── preprocess.py     # Script for data preprocessing
-│   ├── read.py           # Script for reading the data
+│   ├── read.py           # Script for reading the input data
+│   ├── train.py          # Script for training the ML model
 |   ├── verify.py         # Script for verifying the dataframes
 │
 ├── input/                # Raw input data
@@ -58,6 +58,11 @@ project_root/
 ├── .gitignore             # Gitignore file
 ├── .env                   # Environment variables for what data to include in traning and for which date to make predictions
 
+## Running tests
+Run all tests by
+```
+ poetry run pytest
+```
 
 ## Docker 
 The image contains the folders app and demand forecasting and necessary files for poetry. See Dockerfile.  

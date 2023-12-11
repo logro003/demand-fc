@@ -4,6 +4,12 @@ import logging
 from dateutil.relativedelta import relativedelta
 
 
+def extract_all_unique_h3index_small_areas(rides_df:pd.DataFrame)->pd.DataFrame:
+
+    unique_h3index_df = rides_df.groupby('h3index_small').count().reset_index()[['h3index_small']]
+    return unique_h3index_df
+
+
 def preprocessing(rides_df:pd.DataFrame,
                 weather_df: pd.DataFrame
                 ) -> pd.DataFrame:
@@ -21,7 +27,7 @@ def preprocessing(rides_df:pd.DataFrame,
 
     # # #  Creating a dataframe with all possible combinations of days and h3index small area  # # #
     # Extracting all unique h3index small
-    unique_h3index_df = rides_df.groupby('h3index_small').count().reset_index()[['h3index_small']]
+    unique_h3index_df = extract_all_unique_h3index_small_areas(rides_df)
     unique_h3index_df['key'] = 1
 
     # Extracting all uqniue dates in the dataset
@@ -50,4 +56,4 @@ def preprocessing(rides_df:pd.DataFrame,
     preprocessed_df['start_weekday'] =  preprocessed_df.start_date.dt.day_name()
     logging.info("Preprossed dataframe")
 
-    return preprocessed_df, unique_h3index_df
+    return preprocessed_df
