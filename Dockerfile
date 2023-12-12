@@ -21,7 +21,7 @@ COPY pyproject.toml /demand_forecast/
 RUN pip install poetry==1.7.1
 
 # Install project dependencies
-RUN poetry install --no-root
+RUN poetry install --no-root --no-dev
 
 # Setting python path to root folder 
 ENV PYTHONPATH /demand_forecast
