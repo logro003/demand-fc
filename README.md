@@ -5,7 +5,7 @@ Why use poetry for package and dependency management:
 - Simple to use
 - Easy to configuring
 
-Make sure you have poetry installed (https://pypi.org/project/poetry/)
+Make sure you have poetry installed ([https://pypi.org/project/poetry/])
 
 To create virtual environment:
 ```
@@ -28,35 +28,34 @@ poetry update
 ```
 
 ## Code structure overview for case presentation
-
-- project_root/
-
-    - app/
-        - config.py         # Configurations for model features and hyperparameters  
-        - main.py           # Runs training and prediction
-
-    - demand_forecasting/
-        - features.py       # Script for creating features for the model
-        - predict.py        # Script for making predictions for next day
-        - preprocess.py     # Script for data preprocessing
-        - read.py           # Script for reading the input data
-        - train.py          # Script for training the ML model
-        - verify.py         # Script for verifying the dataframes
-
-    - input/                # Raw input data
-
-    - output/               # Model prediction output data
-
-    - notebooks/            # Jupyter notebooks for exploration and analysis
-
-    - tests/                # Unit tests
-
-    - poetry.lock            # ? Dependencies file
-    - pypoetry.toml          # ? 
-    - README.md              # Project documentation
-    -.gitignore             # Gitignore file
-    -.env                   # Environment variables for what data to include in traning and for which date to make predictions
-
+```
+project_root/
+├── app/
+│    ├── config.py         # Configurations for model features and hyperparameters  
+│    ├── main.py           # Runs training and prediction
+│
+├── demand_forecasting/
+│   ├── features.py       # Script for creating features for the model
+│   ├── predict.py        # Script for making predictions for next day
+│   ├── preprocess.py     # Script for data preprocessing
+│   ├── read.py           # Script for reading the input data
+│   ├── train.py          # Script for training the ML model
+|   ├── verify.py         # Script for verifying the dataframes
+│
+├── input/                # Raw input data
+|
+├── output/               # Model prediction output data
+│
+├── notebooks/            # Jupyter notebooks for exploration and analysis
+│
+├── tests/                # Unit tests
+│
+├── poetry.lock           # File generated and used by the Poetry dependency management
+├── pypoetry.toml         # File containing information about its dependencies
+├── README.md             # Project documentation
+├── .gitignore            # Gitignore file
+├── .env                  # Environment variables for what data to include in traning and for which date to make predictions
+```
 ## Running tests
 Run all tests by
 ```
