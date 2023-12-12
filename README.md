@@ -64,7 +64,7 @@ Run all tests by
  poetry run pytest
 ```
 
-## Running application locally 
+## Running application locally
 ```
 poetry run python app/main.py
 ```

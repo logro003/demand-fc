@@ -14,6 +14,7 @@ def extract_all_unique_h3index_small_areas(rides_df: pd.DataFrame) -> pd.DataFra
 
 def preprocessing(rides_df: pd.DataFrame, weather_df: pd.DataFrame) -> pd.DataFrame:
     """ Function which preprocess the data """
+    rides_df["start_time"] = pd.to_datetime(rides_df.start_time)
     rides_df["start_date"] = pd.to_datetime(rides_df.start_time.dt.date)
 
     # Getting traning date and number of histroical days to include in traning dataset

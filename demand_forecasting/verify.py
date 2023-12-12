@@ -7,9 +7,9 @@ from pandera import Column
 def verify_ride_df(df: pd.DataFrame) -> pd.DataFrame:
     table_schema = pa.DataFrameSchema(
         {
-            "ride_id": Column(str, coerce=True),  #coerce = True: coercing the column into the specified dtype
+            "ride_id": Column(str, coerce=True), #coerce = True: coercing the column into the specified dtype
             "city_name": Column(str, coerce=True),
-            "start_time": Column(datetime, coerce=True),
+            "start_time": Column(str, coerce=True), #Column(datetime, coerce=True),
             "start_lon": Column(float, coerce=True),
             "start_lat": Column(float, coerce=True),
             "h3index_big": Column(str, coerce=True),

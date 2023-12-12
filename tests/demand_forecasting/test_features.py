@@ -7,13 +7,14 @@ def test_avg_num_of_rideds_one_week_before_feature():
     """ Testing feature generation for average number of rides one week before """
     # Given
     preprocessed_df = generate_mock_data()
-    #When 
+    # When
     df_with_features = generate_features_for_training(preprocessed_df)
-    #Then 
+    # Then
     assert int(df_with_features.iloc[-1:, :].avg_num_rides_in_area_one_week_before.iloc[0])  == 10
 
 
 def generate_mock_data():
+    """ Generating mock data for testing """
     preprocessed_df = pd.DataFrame({'h3index_small': ['891f25a9ecbffff',
                                                         '891f25a9ecbffff',
                                                         '891f25a9ecbffff',
